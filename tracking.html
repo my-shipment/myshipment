@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FedEx Tracking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #4d148c;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header img {
+            width: 30px;
+        }
+
+        .header .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header .nav select {
+            border: none;
+            background-color: #4d148c;
+            color: white;
+        }
+
+        .main-content {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px;
+        }
+
+        .image-display {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-right: 30px;
+        }
+
+        .image-display img {
+            max-width: 100%;
+            height: 480px;
+            margin-top: 39px;
+        }
+
+        .below-image-info {
+            margin-top: 80px;
+            color: black;
+            font-size: large;
+            text-align: left;
+            margin-left: 30px;
+
+
+        }
+
+        .tracking-info {
+            width: 60%;
+            padding-top: 35px;
+            font-size: small;
+        }
+
+        .tracking-step {
+            margin-bottom: 20px;
+        }
+
+        .status {
+            font-weight: bold;
+            color: black;
+            font-size: small;
+        }
+
+        .tracking-child {
+            color: gray;
+            margin-bottom: 20px;
+            font-size: small;
+        }
+
+        .tracking-bold {
+            color: gray;
+            margin-bottom: 20px;
+            font-size: small;
+        }
+
+        .footer {
+            background-color: #f2f2f2;
+            padding: 20px 10px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #4d148c;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .social-media {
+            margin-top: 20px;
+        }
+
+        .social-media p {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #4d148c;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            filter: invert(14%) sepia(99%) saturate(6361%) hue-rotate(268deg) brightness(90%) contrast(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.2);
+        }
+
+        .additional-info {
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 20px;
+            margin-left: 30px;
+            gap: 10px;
+        }
+
+        
+        
+
+        .additional-info-2 {
+            margin-top: 10px;
+
+        }
+
+        .additional-info-3 {
+            margin-top: 10px;
+        }
+
+        .additional-info-4 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .additional-info-5 {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="nav">
+            <div><img src="download.png" alt="FedEx Logo"></div>
+            <div>Shipping <select>
+                    <option>Options</option>
+                </select></div>
+            <div>Tracking <select>
+                    <option>Track a Package</option>
+                </select></div>
+            <div>Design & Print <select>
+                    <option>Services</option>
+                </select></div>
+            <div>Locations <select>
+                    <option>Find Locations</option>
+                </select></div>
+            <div>Support <select>
+                    <option>Help</option>
+                </select></div>
+            <div>Sign Up or Log in</div>
+            <div><img src="icons8-male-user-50.png" alt="User Icon"></div>
+            <div><img src="icons8-search-50.png" alt="Search Icon"></div>
+        </div>
+    </div>
+    <div class="additional-info">
+        <div class="additional-info-1"><strong>SENDER'S NAME: <br></strong> Mary Henderson</div>
+        <div class="additional-info-2"><strong>RECEIVER'S NAME: <br></strong> George Bill</div>
+        <div class="additional-info-3"><strong>SIGNATURE REQUIRED: <br></strong> No</div>
+        <div class="additional-info-4"><strong>TRACKING NUMBER: <br></strong> 5700993790865370PWA</div>
+        <div class="additionalinfo-5"><strong>DELIVERY STATUS: <br></strong>In Transit>> </div>
+        
+    </div>
+
+    <div class="main-content">
+        <div class="image-display">
+            <img src="WhatsApp Image 2025-05-01 at 3.48.34 PM.jpeg" alt="FedEx Tracking Progress" />
+            <div class="below-image-info">
+
+            </div>
+        </div>
+
+        <div class="tracking-info">
+            <div class="tracking-step">
+                <div class="status">FROM:</div>
+                Moreno Valley, CA US<br>
+                <small><em>Label Created</em> <br> 3/21/2023 8:59 AM</small>
+            </div>
+            <div class="tracking-step">
+                <div class="status">PACKAGE RECEIVED BY FEDEX:</div>
+                BLOOMINTON, CA<br>
+                <small>3/21/2023 8:27 PM</small>
+            </div>
+            <div class="tracking-step">
+                <div class="status">IN TRANSIT:</div>
+                Departed FedEx location<br>
+                BLOOMINTON, CA – 3/22/2023 5:02 AM
+            </div>
+            <div class="tracking-bold">
+                <div class="tracking-child">OUT FOR DELIVERY</div>
+            </div>
+            <div class="tracking-bold">
+                TO<br>SARATOGA SPRINGS, NY US
+            </div>
+            <div class="tracking-child">
+                <em>Updated Delivery</em><br>03/02/2025 by end of day
+            </div>
+            <div class="tracking-child">
+                <em>Initially Expected</em><br>Tuesday, 03/25/2025
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About FedEx</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
+
+            <div class="social-media">
+                <p>Follow FedEx on</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                            alt="Facebook"></a>
+                    <a href="https://instagram.com" target="_blank"><img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                            alt="Instagram"></a>
+                    <a href="https://youtube.com" target="_blank"><img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                            alt="YouTube"></a>
+                    <a href="https://twitter.com" target="_blank"><img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg"
+                            alt="Twitter"></a>
+                    <a href="https://pinterest.com" target="_blank"><img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pinterest.svg
