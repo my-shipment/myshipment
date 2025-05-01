@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FedEx Tracking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <a href="tracking.html"></a>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+    }
+
+    .header {
+      background-color: #4d148c;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header img {
+      width: 30px;
+    }
+
+    .header .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header .nav select {
+      border: none;
+      background-color: #4d148c;
+      color: white;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-left {
+      background: linear-gradient(to right, #4d148c, #ff4c00);
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: lighter;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .hero-right {
+      background-image: url(Drivers.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 200px;
+    }
+
+    .info-banner {
+      background-color: #009cde;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .info-banner .cta {
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .track-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tab {
+      background: none;
+      border: none;
+      padding: 15px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background-color: #4d148c;
+      color: white;
+    }
+
+    .enter-1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 1rem;
+      color: gray;
+    }
+
+    .track-input {
+      max-width: 90%;
+      margin: auto;
+      padding: 20px 10px;
+    }
+
+    .track-input label {
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+      color: #555;
+    }
+
+    .track-input input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ccc;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .help {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .help a {
+      color: #009cde;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .track-btn {
+      text-align: center;
+    }
+
+    .track-btn button {
+      background-color: orangered;
+      color: white;
+      border: none;
+      padding: 10px 30px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Tablet */
+    @media (min-width: 600px) {
+      body {
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        flex-direction: row;
+      }
+
+      .hero-right {
+        height: auto;
+        flex: 1;
+      }
+
+      .hero-left {
+        flex: 1;
+      }
+
+      .header .nav {
+        justify-content: space-between;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 992px) {
+      body {
+        font-size: 1.2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .track-input {
+        max-width: 600px;
+      }
+    }
+    .footer {
+  background-color: #f2f2f2;
+  padding: 20px 10px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #4d148c;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.footer p {
+  font-size: 12px;
+  color: #888;
+}
+.social-media {
+  margin-top: 20px;
+}
+
+.social-media p {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #4d148c;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  fill: #4d148c;
+  filter: invert(14%) sepia(99%) saturate(6361%) hue-rotate(268deg) brightness(90%) contrast(120%);
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2);
+}
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="nav">
+      <div><img src="download.png" alt="FedEx Logo"></div>
+      <div>Shipping <select></select></div>
+      <div>Tracking <select></select></div>
+      <div>Design & Print <select></select></div>
+      <div>Locations <select></select></div>
+      <div>Support <select></select></div>
+      <div>Sign Up or Log in</div>
+      <div><img src="icons8-male-user-50.png" alt="User Icon"></div>
+      <div><img src="icons8-search-50.png" alt="Search Icon"></div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-left">
+      <h1>Tracking starts here</h1>
+      <p>Track your FedEx®️ shipments with one of the <br> convenient tools below. Want more visibility of <br>
+        deliveries to your
+        home? Sign up for FedEx Delivery <br> Manager®️ for free.</p>
+      <p><strong>SIGN UP FOR FREE</strong></p>
+    </div>
+    <div class="hero-right"></div>
+  </div>
+
+  <div class="info-banner">
+    <p>
+      FedEx can ship for less than the Post Office. Two-day retail shipping, one flat rate.
+      <strong>FedEx One Rate.</strong>
+      <br><span class="cta">Start shipping with FedEx One Rate.</span>
+    </p>
+  </div>
+
+  <div class="track-tabs">
+    <button class="tab active">Tracking number</button>
+    <button class="tab">Track by reference</button>
+    <button class="tab">Track by TCN</button>
+    <button class="tab">Obtain proof of delivery</button>
+  </div>
+
+  <div class="enter-1">
+    <h2>Enter up to 30 of your FedEx tracking, door tag, or <br> FedEx Office order numbers (one per line).</h2>
+  </div>
+
+  <div class="track-input">
+    <label for="trackingNumber">Tracking number*</label>
+    <input type="text" id="trackingNumber" placeholder="">
+    <div class="help">
+      <a href="#">NEED HELP?</a>
+    </div>
+    <div class="track-btn">
+      <button onclick="trackPackage()">Track</button>
+      <p id="errorMessage" style="color: red; display: none;">Currently, we are not able to provide the tracking details. We can’t locate shipments if we haven’t received information from the shipper yet, or if the package information is older than 120 days.</p>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">About FedEx</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+  
+      <div class="social-media">
+        <p>Follow FedEx on</p>
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+          </a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube">
+          </a>
+          <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter">
+          </a>
+          <a href="https://pinterest.com" target="_blank" aria-label="Pinterest">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pinterest.svg" alt="Pinterest">
+          </a>
+        </div>
+      </div>
+  
+      <p>&copy; 2025 FedEx. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    function trackPackage() {
+      var input = document.getElementById("trackingNumber").value.trim();
+      const validTrackingNumbers = ["281442392830", "PKG123456", "5700993790865370PWA"]; // your custom IDs
+  
+      if (validTrackingNumbers.includes(input)) {
+        // Redirect and pass the tracking number as a URL parameter
+        window.location.href = "tracking.html?trackingId=" + encodeURIComponent(input);
+      } else {
+        document.getElementById("errorMessage").style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
