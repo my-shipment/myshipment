@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FedEx Tracking</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <a href="tracking.html"></a>
-
+  <title>FedEx Tracking - Ship & Track Packages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+    :root {
+      --fedex-purple: #4d148c;
+      --fedex-orange: #ff6600;
+      --fedex-blue: #009cde;
+      --text-dark: #333;
+      --text-medium: #555;
+      --text-light: #777;
+      --bg-light: #f8f8f8;
+      --white: #ffffff;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,365 +26,514 @@
 
     body {
       font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text-dark);
+      background-color: var(--white);
     }
 
+    /* Header Styles */
     .header {
-      background-color: #4d148c;
-      color: white;
-      padding: 15px 20px;
+      background-color: var(--fedex-purple);
+      color: var(--white);
+      padding: 12px 20px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      position: relative;
     }
 
-    .header img {
-      width: 30px;
+    .logo img {
+      height: 28px;
+      width: auto;
     }
 
-    .header .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .header .nav select {
+    .nav-toggle {
+      display: none;
+      background: none;
       border: none;
-      background-color: #4d148c;
-      color: white;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-item {
+      color: var(--white);
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-item select {
+      border: none;
+      background-color: transparent;
+      color: var(--white);
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      appearance: none;
+      padding-right: 15px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right center;
+    }
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .user-icon, .search-icon {
+      color: var(--white);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
     .hero {
       display: flex;
       flex-direction: column;
+      background: linear-gradient(135deg, var(--fedex-purple), var(--fedex-orange));
+      color: var(--white);
     }
 
-    .hero-left {
-      background: linear-gradient(to right, #4d148c, #ff4c00);
-      color: white;
+    .hero-content {
       padding: 40px 20px;
+      max-width: 600px;
     }
 
     .hero h1 {
-      font-size: 2rem;
-      font-weight: lighter;
-      margin-bottom: 20px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      line-height: 1.3;
     }
 
     .hero p {
       font-size: 1rem;
-      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
-    .hero-right {
-      background-image: url(Drivers.jpg);
+    .cta-button {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--fedex-purple);
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .hero-image {
+      height: 250px;
+      background-image: url('https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      height: 200px;
     }
 
+    /* Info Banner */
     .info-banner {
-      background-color: #009cde;
-      color: white;
-      padding: 20px;
+      background-color: var(--fedex-blue);
+      color: var(--white);
+      padding: 15px 20px;
       text-align: center;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
-    .info-banner .cta {
+    .info-banner strong {
+      font-weight: 700;
+    }
+
+    .info-banner .cta-link {
       display: block;
-      font-weight: bold;
-      margin-top: 10px;
+      color: var(--white);
+      font-weight: 600;
+      margin-top: 8px;
+      text-decoration: underline;
+    }
+
+    /* Tracking Section */
+    .tracking-section {
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .track-tabs {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background: white;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border-bottom: 1px solid #ddd;
-    }
-
-    .tab {
-      background: none;
-      border: none;
-      padding: 15px 20px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #333;
-      cursor: pointer;
-    }
-
-    .tab.active {
-      background-color: #4d148c;
-      color: white;
-    }
-
-    .enter-1 {
-      text-align: center;
-      padding: 20px;
-      font-size: 1rem;
-      color: gray;
-    }
-
-    .track-input {
-      max-width: 90%;
-      margin: auto;
-      padding: 20px 10px;
-    }
-
-    .track-input label {
-      font-weight: 600;
-      margin-bottom: 10px;
-      display: block;
-      color: #555;
-    }
-
-    .track-input input {
-      width: 100%;
-      padding: 12px;
-      border: 2px solid #ccc;
-      height: 50px;
-      margin-bottom: 10px;
-    }
-
-    .help {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
       margin-bottom: 20px;
     }
 
-    .help a {
-      color: #009cde;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .track-btn {
-      text-align: center;
-    }
-
-    .track-btn button {
-      background-color: orangered;
-      color: white;
+    .tab {
+      flex: 0 0 auto;
+      background: none;
       border: none;
-      padding: 10px 30px;
-      font-weight: bold;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-medium);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      color: var(--fedex-purple);
+      border-bottom: 3px solid var(--fedex-purple);
+    }
+
+    .track-input-container {
+      background-color: var(--bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .track-input label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .track-input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .help-link {
+      display: block;
+      text-align: right;
+      color: var(--fedex-blue);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .track-button {
+      display: block;
+      width: 100%;
+      background-color: var(--fedex-orange);
+      color: var(--white);
+      border: none;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
       border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    /* Tablet */
-    @media (min-width: 600px) {
-      body {
-        font-size: 1.1rem;
-      }
+    .track-button:hover {
+      background-color: #e65c00;
+    }
 
+    .error-message {
+      color: #d32f2f;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--bg-light);
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .footer-link {
+      color: var(--fedex-purple);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .social-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .social-title {
+      font-weight: 600;
+      color: var(--fedex-purple);
+      margin-bottom: 15px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-icon {
+      color: var(--fedex-purple);
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.2);
+    }
+
+    .copyright {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .header {
+        flex-wrap: wrap;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 15px 0;
+        gap: 15px;
+      }
+      
+      .nav.active {
+        display: flex;
+      }
+      
+      .nav-item {
+        width: 100%;
+        padding: 8px 0;
+      }
+      
+      .user-actions {
+        margin-left: auto;
+      }
+      
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .hero-image {
+        height: 200px;
+      }
+      
+      .tab {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (min-width: 769px) {
       .hero {
         flex-direction: row;
+        min-height: 400px;
       }
-
-      .hero-right {
+      
+      .hero-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px;
+      }
+      
+      .hero-image {
+        flex: 1;
         height: auto;
-        flex: 1;
       }
-
-      .hero-left {
-        flex: 1;
-      }
-
-      .header .nav {
-        justify-content: space-between;
+      
+      .track-tabs {
+        justify-content: center;
       }
     }
-
-    /* Desktop */
-    @media (min-width: 992px) {
-      body {
-        font-size: 1.2rem;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-      }
-
-      .track-input {
-        max-width: 600px;
-      }
-    }
-    .footer {
-  background-color: #f2f2f2;
-  padding: 20px 10px;
-  text-align: center;
-  margin-top: 40px;
-}
-
-.footer-content {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  text-decoration: none;
-  color: #4d148c;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.footer p {
-  font-size: 12px;
-  color: #888;
-}
-.social-media {
-  margin-top: 20px;
-}
-
-.social-media p {
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #4d148c;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.social-icons img {
-  width: 24px;
-  height: 24px;
-  fill: #4d148c;
-  filter: invert(14%) sepia(99%) saturate(6361%) hue-rotate(268deg) brightness(90%) contrast(120%);
-  transition: transform 0.3s ease;
-}
-
-.social-icons a:hover img {
-  transform: scale(1.2);
-}
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <div class="nav">
-      <div><img src="download.png" alt="FedEx Logo"></div>
-      <div>Shipping <select></select></div>
-      <div>Tracking <select></select></div>
-      <div>Design & Print <select></select></div>
-      <div>Locations <select></select></div>
-      <div>Support <select></select></div>
-      <div>Sign Up or Log in</div>
-      <div><img src="icons8-male-user-50.png" alt="User Icon"></div>
-      <div><img src="icons8-search-50.png" alt="Search Icon"></div>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo">
     </div>
-  </div>
-
-  <div class="hero">
-    <div class="hero-left">
-      <h1>Tracking starts here</h1>
-      <p>Track your FedEx®️ shipments with one of the <br> convenient tools below. Want more visibility of <br>
-        deliveries to your
-        home? Sign up for FedEx Delivery <br> Manager®️ for free.</p>
-      <p><strong>SIGN UP FOR FREE</strong></p>
+    
+    <button class="nav-toggle" id="navToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <nav class="nav" id="mainNav">
+      <div class="nav-item">
+        Shipping
+        <select>
+          <option>Options</option>
+        </select>
+      </div>
+      <div class="nav-item">
+        Tracking
+        <select>
+          <option>Track a Package</option>
+        </select>
+      </div>
+      <div class="nav-item">
+        Design & Print
+        <select>
+          <option>Services</option>
+        </select>
+      </div>
+      <div class="nav-item">
+        Locations
+        <select>
+          <option>Find Locations</option>
+        </select>
+      </div>
+      <div class="nav-item">
+        Support
+        <select>
+          <option>Help</option>
+        </select>
+      </div>
+    </nav>
+    
+    <div class="user-actions">
+      <div class="nav-item">Sign In</div>
+      <i class="fas fa-user user-icon"></i>
+      <i class="fas fa-search search-icon"></i>
     </div>
-    <div class="hero-right"></div>
-  </div>
+  </header>
 
-  <div class="info-banner">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Track Your FedEx Shipments</h1>
+      <p>Get real-time updates on your packages with our easy-to-use tracking tools. Sign up for FedEx Delivery Manager® for more control over your home deliveries.</p>
+      <a href="#" class="cta-button">SIGN UP FOR FREE</a>
+    </div>
+    <div class="hero-image"></div>
+  </section>
+
+  <!-- Info Banner -->
+  <section class="info-banner">
     <p>
-      FedEx can ship for less than the Post Office. Two-day retail shipping, one flat rate.
-      <strong>FedEx One Rate.</strong>
-      <br><span class="cta">Start shipping with FedEx One Rate.</span>
+      <strong>FedEx One Rate:</strong> Simple, flat-rate shipping that can cost less than the Post Office.
+      <a href="#" class="cta-link">Start shipping with FedEx One Rate</a>
     </p>
-  </div>
+  </section>
 
-  <div class="track-tabs">
-    <button class="tab active">Tracking number</button>
-    <button class="tab">Track by reference</button>
-    <button class="tab">Track by TCN</button>
-    <button class="tab">Obtain proof of delivery</button>
-  </div>
-
-  <div class="enter-1">
-    <h2>Enter up to 30 of your FedEx tracking, door tag, or <br> FedEx Office order numbers (one per line).</h2>
-  </div>
-
-  <div class="track-input">
-    <label for="trackingNumber">Tracking number*</label>
-    <input type="text" id="trackingNumber" placeholder="">
-    <div class="help">
-      <a href="#">NEED HELP?</a>
+  <!-- Tracking Section -->
+  <section class="tracking-section">
+    <div class="track-tabs">
+      <button class="tab active">Tracking number</button>
+      <button class="tab">Track by reference</button>
+      <button class="tab">Track by TCN</button>
+      <button class="tab">Obtain proof of delivery</button>
     </div>
-    <div class="track-btn">
-      <button onclick="trackPackage()">Track</button>
-      <p id="errorMessage" style="color: red; display: none;">Currently, we are not able to provide the tracking details. We can’t locate shipments if we haven’t received information from the shipper yet, or if the package information is older than 120 days.</p>
+    
+    <div class="track-input-container">
+      <h2 class="enter-1">Enter your FedEx tracking, door tag, or FedEx Office order number</h2>
+      
+      <form id="trackingForm">
+        <label for="trackingNumber">Tracking number*</label>
+        <input type="text" id="trackingNumber" class="track-input" placeholder="e.g. 123456789012">
+        
+        <a href="#" class="help-link">NEED HELP?</a>
+        
+        <button type="button" class="track-button" onclick="trackPackage()">
+          TRACK
+        </button>
+        
+        <p id="errorMessage" class="error-message">
+          Currently, we are not able to provide the tracking details. We can't locate shipments if we haven't received information from the shipper yet, or if the package information is older than 120 days.
+        </p>
+      </form>
     </div>
-  </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-links">
-        <a href="#">About FedEx</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="#" class="footer-link">About FedEx</a>
+        <a href="#" class="footer-link">Contact Us</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Use</a>
+        <a href="#" class="footer-link">Careers</a>
       </div>
-  
-      <div class="social-media">
-        <p>Follow FedEx on</p>
+      
+      <div class="social-section">
+        <p class="social-title">Follow FedEx</p>
         <div class="social-icons">
-          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
-          </a>
-          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
-          </a>
-          <a href="https://youtube.com" target="_blank" aria-label="YouTube">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube">
-          </a>
-          <a href="https://twitter.com" target="_blank" aria-label="Twitter">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter">
-          </a>
-          <a href="https://pinterest.com" target="_blank" aria-label="Pinterest">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pinterest.svg" alt="Pinterest">
-          </a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f social-icon"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter social-icon"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in social-icon"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube social-icon"></i></a>
         </div>
       </div>
-  
-      <p>&copy; 2025 FedEx. All rights reserved.</p>
+      
+      <p class="copyright">© 2025 FedEx. All rights reserved.</p>
     </div>
   </footer>
+
   <script>
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    navToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+    
+    // Tracking function
     function trackPackage() {
-      var input = document.getElementById("trackingNumber").value.trim();
-      const validTrackingNumbers = ["281442392830", "PKG123456", "5700993790865370PWA"]; // your custom IDs
-  
+      const input = document.getElementById("trackingNumber").value.trim();
+      const validTrackingNumbers = ["281442392830", "PKG123456", "5700993790865370PWA"];
+      const errorMessage = document.getElementById("errorMessage");
+      
       if (validTrackingNumbers.includes(input)) {
-        // Redirect and pass the tracking number as a URL parameter
         window.location.href = "tracking.html?trackingId=" + encodeURIComponent(input);
       } else {
-        document.getElementById("errorMessage").style.display = "block";
+        errorMessage.style.display = "block";
       }
     }
   </script>
-
 </body>
 </html>
